@@ -8,7 +8,8 @@ module.exports = {
 	module: {
 		rules: [
       { test: /\.css$/i, use: [MiniCssExtractPlugin.loader, "css-loader"],},
-			{ test: /\.(js)$/, use: 'babel-loader' }
+			{ test: /\.(js)$/, use: 'babel-loader' },
+			{ test: /\.html$/i, loader: "html-loader", },
     ],
 	},
 	output: {
@@ -16,8 +17,14 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist')
 	},
 	plugins: [
-    new HtmlWebpackPlugin(),
-		new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+            template:'./src/index.html',
+            filename:'index.html',
+            chunks:['main']
+        }),
+		new MiniCssExtractPlugin({
+			filename: "style.css"
+		}),
   ],
 	 mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
 }
