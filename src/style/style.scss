@@ -1,0 +1,82 @@
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: 'Roboto', sans-serif;
+		}
+
+		.calc {
+			border: 10px #000 solid;
+			margin: 0 auto;
+			width: 700px;
+			color: #fff;
+			background-color: rgb(42, 37, 43);
+			font-size: 60px;
+			position: relative;
+			&__input {
+				background-color: rgb(42, 37, 43);
+				color: #fff;
+				width: 100%;
+				padding: 100px 10px 10px 0;
+				text-align: end;
+				overflow: auto;
+				font-size: 60px;
+				
+			}
+			&__field {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 3px;
+			}
+			&__num--long {
+				grid-column-start: 1;
+				grid-column-end: 3;
+			}
+			&__field button {
+				font-family: inherit;
+				border: none;
+				padding: 0;
+				margin: 0;
+				color: #fff;
+				font-size: 40px;
+				padding: 40px;
+				cursor: pointer;
+				transition: background-color 0.2s linear;
+			}
+			&__unary {
+				background-color: rgb(63, 58, 64);
+			}
+
+			&__unary:hover {
+				background-color: rgb(48, 47, 48);
+			}
+
+			&__num {
+				background-color: rgb(93, 91, 96);
+			}
+
+			&__num:hover {
+				background-color: rgb(69, 68, 70);
+			}
+
+			&__act {
+				background-color: rgb(255, 159, 12);
+			}
+
+			&__act:hover {
+				background-color: rgb(197, 120, 5);
+			}
+			
+			&__result {
+				font-size: 40px;
+				display: block;
+				opacity: 0.5;
+				position: absolute;
+				left: 10px;
+				top: 10px;
+			}
+		}
