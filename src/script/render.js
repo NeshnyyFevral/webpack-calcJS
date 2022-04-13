@@ -9,18 +9,18 @@ function createButton(b) {
   return button;
 }
 
-export const input = document.createElement('div');
+const input = document.createElement('div');
 input.classList.add('calc__input');
 input.innerHTML = '0';
 
-export const calcField = document.createElement('div');
+const calcField = document.createElement('div');
 calcField.classList.add('calc__field');
 
-export const resultItem = document.createElement('div');
+const resultItem = document.createElement('div');
 resultItem.classList.add('calc__result');
 resultItem.innerHTML = '';
 
-export function render(desc, buttons) {
+function render(desc, buttons) {
   desc.append(input);
   desc.append(resultItem);
   desc.append(calcField);
@@ -30,3 +30,7 @@ export function render(desc, buttons) {
     calcField.append(button);
   });
 }
+
+export {
+  input, calcField, resultItem, render,
+};
