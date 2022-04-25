@@ -8,7 +8,6 @@ function calculateString(str) {
 }
 
 export function clickOnNum(num) {
-  console.log(result.finally);
   if (result.finally === '0') {
     result.finally = num;
     curOperator = num;
