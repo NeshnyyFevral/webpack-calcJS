@@ -1,9 +1,13 @@
 import './style/style.scss';
-import { render, calcField } from './script/render';
-import { buttons } from './script/buttons';
+import { render, calcField, calc } from './script/render';
+/* import { buttons } from './script/buttons'; */
 import { tabIvents } from './script/tabIvents';
+import { result, watcher } from './script/reactivity';
 
-const calc = document.querySelector('.calc');
-render(calc, buttons);
+/* render(calc, buttons, inputResult.value); */
+watcher(() => {
+  calc.innerHTML = ' ';
+  render(calc, result.finally, result.prefinally);
+});
 
 calcField.addEventListener('keydown', () => tabIvents());

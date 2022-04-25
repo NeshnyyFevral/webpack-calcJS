@@ -12,8 +12,10 @@
     },
     "rules": {
         "import/prefer-default-export": "off",
+        "import/no-mutable-exports": "off",
         "no-new-func": "off",
         "no-console": "off",
+        "import/no-cycle": "off",
          "quotes": [
              "error",
              "single"

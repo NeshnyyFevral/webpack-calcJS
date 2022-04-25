@@ -1,4 +1,4 @@
-import { input, resultItem } from './render';
+import { result } from './reactivity';
 
 let action = false;
 let curOperator = '';
@@ -8,57 +8,59 @@ function calculateString(str) {
 }
 
 export function clickOnNum(num) {
-  if (input.innerHTML === '0') {
-    input.innerHTML = num;
+  console.log(result.finally);
+  if (result.finally === '0') {
+    result.finally = num;
     curOperator = num;
-    resultItem.innerHTML = +calculateString(input.innerHTML).toFixed(8);
+    result.prefinally = +calculateString(result.finally).toFixed(8);
     return;
   }
   if (curOperator.includes('e')) return;
-  if (curOperator === '0') input.innerHTML += '.';
-  input.innerHTML += num;
+  if (curOperator === '0') result.finally += '.';
+  result.finally += num;
   curOperator += num;
-  resultItem.innerHTML = +calculateString(input.innerHTML).toFixed(8);
+  result.prefinally = +calculateString(result.finally).toFixed(8);
   action = false;
 }
 
 export function clickOnAct(act) {
   if (action) return;
-  input.innerHTML += act;
+  result.finally += act;
   curOperator = '';
-  resultItem.innerHTML = '';
+  result.prefinally = '';
   action = true;
 }
 
 export function clickOnUnary(unary) {
   if (unary === 'AC') {
     action = false;
-    input.innerHTML = '0';
+    result.finally = '0';
     curOperator = '';
-    resultItem.innerHTML = '';
+    result.prefinally = '';
     return;
   }
   if (unary === '±') {
-    input.innerHTML = +(calculateString(input.innerHTML) * (-1)).toFixed(8);
-    curOperator = input.innerHTML;
-    resultItem.innerHTML = '';
+    result.finally = +(calculateString(result.finally) * (-1)).toFixed(8);
+    curOperator = result.finally;
+    result.prefinally = '';
     return;
   }
 
-  input.innerHTML = input.innerHTML.slice(0, input.innerHTML.length - curOperator.length);
+  result.finally = result.finally.slice(0, result.finally.length - curOperator.length);
   curOperator = `${+(calculateString(curOperator) / 100).toFixed(7)}`;
-  input.innerHTML += curOperator;
-  resultItem.innerHTML = +calculateString(input.innerHTML).toFixed(8);
+  result.finally += curOperator;
+  result.prefinally = +calculateString(result.finally).toFixed(8);
 }
 
 export function clickOnFloatingPoint() {
   if (curOperator.includes('.') || action) return;
-  input.innerHTML += '.';
+  action = true;
+  result.finally += '.';
   curOperator += '.';
 }
 
 export function clickOnResult() {
-  input.innerHTML = +calculateString(input.innerHTML).toFixed(8);
-  curOperator = input.innerHTML;
-  resultItem.innerHTML = '';
+  result.finally = +calculateString(result.finally).toFixed(8);
+  curOperator = result.finally;
+  result.prefinally = '';
 }
