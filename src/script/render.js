@@ -2,7 +2,7 @@ import { buttons } from './buttons';
 
 const calc = document.querySelector('.calc');
 
-function createButton(b) {
+const createButton = (b) => {
   const button = document.createElement('button');
   if (b.text === 'AC' || b.text === '±' || b.text === '%') button.classList.add('calc__unary');
   else if (b.text === '/' || b.text === '+' || b.text === '-' || b.text === '*' || b.text === '=') button.classList.add('calc__act');
@@ -11,22 +11,13 @@ function createButton(b) {
   button.innerText = b.text;
   button.onclick = b.onClick;
   return button;
-}
+};
 
 const createElement = (tagName, className) => {
   const element = document.createElement(tagName);
   element.classList.add(className);
   return element;
 };
-
-/* const input = document.createElement('div');
-input.classList.add('calc__input');
-
-const calcField = document.createElement('div');
-calcField.classList.add('calc__field');
-
-const resultItem = document.createElement('div');
-resultItem.classList.add('calc__result'); */
 
 const input = createElement('div', 'calc__input');
 const calcField = createElement('div', 'calc__field');
@@ -38,7 +29,7 @@ buttons.forEach((element) => {
   buttonElements.push(button);
 });
 
-function render(desc, result, preResult) {
+const render = (desc, result, preResult) => {
   desc.append(input);
   desc.append(resultItem);
   desc.append(calcField);
@@ -48,7 +39,7 @@ function render(desc, result, preResult) {
 
   input.innerText = result;
   resultItem.innerText = preResult;
-}
+};
 
 export {
   input, calcField, resultItem, render, calc,

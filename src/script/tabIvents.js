@@ -1,6 +1,6 @@
 import { calcField } from './render';
 
-export function tabIvents() {
+export const tabIvents = () => {
   const firstTabElem = calcField.children[0];
   const lastTabElem = calcField.children[calcField.children.length - 1];
 
@@ -18,4 +18,4 @@ export function tabIvents() {
     }
     return null;
   };
-}
+};

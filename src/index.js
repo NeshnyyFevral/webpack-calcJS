@@ -6,6 +6,5 @@ import { result, watcher } from './script/reactivity';
 calcField.addEventListener('keydown', () => tabIvents());
 
 watcher(() => {
-  calc.innerHTML = ' ';
   render(calc, result.finally, result.prefinally);
 });
