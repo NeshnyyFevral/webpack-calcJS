@@ -13,14 +13,24 @@ function createButton(b) {
   return button;
 }
 
-const input = document.createElement('div');
+const createElement = (tagName, className) => {
+  const element = document.createElement(tagName);
+  element.classList.add(className);
+  return element;
+};
+
+/* const input = document.createElement('div');
 input.classList.add('calc__input');
 
 const calcField = document.createElement('div');
 calcField.classList.add('calc__field');
 
 const resultItem = document.createElement('div');
-resultItem.classList.add('calc__result');
+resultItem.classList.add('calc__result'); */
+
+const input = createElement('div', 'calc__input');
+const calcField = createElement('div', 'calc__field');
+const resultItem = createElement('div', 'calc__result');
 
 const buttonElements = [];
 buttons.forEach((element) => {
