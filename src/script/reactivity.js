@@ -15,18 +15,6 @@ class Dep {
   }
 }
 
-/* obj = new Proxy(obj, {
-  get(proxyTarget, prop){
-    dep.depend();
-    return proxyTarget[prop];
-  },
-  set(proxyTarget, prop, newValue){
-    proxyTarget[prop] = newValue;
-    dep.notify();
-    return true;
-  }
-}) */
-
 const result = {
   prefinally: '',
   finally: '0',
