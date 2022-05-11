@@ -15,8 +15,7 @@ class Dep {
   }
 }
 
-const result = {
-  prefinally: '',
+let result = {
   finally: '0',
 };
 
@@ -24,17 +23,20 @@ Object.keys(result).forEach((key) => {
   let value = result[key];
   const dep = new Dep();
 
-  Object.defineProperty(result, key, {
+  result = new Proxy(result, {
     get() {
       dep.depend();
       return value;
     },
-    set(newValue) {
+    set(...args) {
+      const newValue = args[2];
       value = newValue;
       dep.notify();
+      return true;
     },
   });
 });
+
 const watcher = (func) => {
   target = func;
   target();
